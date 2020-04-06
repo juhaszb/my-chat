@@ -1,4 +1,5 @@
 import { ProxyEventMap } from "./Proxy"
+import App from "./App";
 
 
 export interface MessageDto {
@@ -107,7 +108,10 @@ class Proxy extends EventProducer<ProxyEventMap>
                     break;
                 case "login":
                     this.inbox = p.inbox;
+                    islogged=true;
                    // this.addEventListener("login",p,null);
+                   islogged=true;
+                   
                     this.dispatch("login");
                     break;
                 case "message":
@@ -140,9 +144,7 @@ class Proxy extends EventProducer<ProxyEventMap>
 }
 export var proxy = new Proxy();
 
-
-
-
+export var islogged = false;
 
 
 

@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
 import { Login } from './Login'
 import { Main } from './Main'
+import { islogged, proxy } from './chat.d';
 
 
 
- interface State{isLoggedIn:boolean};
+
+/* interface State{isLoggedIn:boolean};
+ export var state:State;
+*/
 
 export default class App extends Component {
-  state:State={isLoggedIn:false};
+
+ 
   render() {  
+    proxy.addEventListener("login",() => this.forceUpdate(),this);
     return (
       <div className="app">
-       { this.state.isLoggedIn ? <Main />: <Login />}
+       {!islogged && <Login />}
+       {islogged&& <Main />}
       </div>
     );
   }
