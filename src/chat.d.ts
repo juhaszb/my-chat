@@ -63,11 +63,11 @@ export class EventProducer {
     }
 
 
-    removeEventListener(type: string, listener) {
+    removeEventListener<K extends keyof M>(type: K, listener: M[K]) {
         this.listeners.splice(this.listeners.findIndex(x => x.type === type && x.listener === listener), 1);
     }
 
-    protected dispatch(type: string, ...args) {
+    protected dispatch<K extends keyof M>(type: K, ...args) {
         for (let listener of this.listeners.filter(x => x.type === type))
             listener.listener.call(listener.obj, ...args);
     }

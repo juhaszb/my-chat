@@ -18,7 +18,7 @@ export class RightPane extends Component<{ conversation?: ConversationDto, onBac
     }
 
     onSend(text: string) {
-        proxy.sendPacket({ type: "message", channelId: this.props.conversation!.channelId, referenceTo: 0, contentType: 0, content: "X: " + text });
+        proxy.sendPacket({ type: "message", channelId: this.props.conversation!.channelId, referenceTo: 0, contentType: 0, content: "B: " + text });
         return true;
     }
 
